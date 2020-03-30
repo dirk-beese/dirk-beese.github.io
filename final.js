@@ -92,7 +92,7 @@ function changeColorOfLowest(){
 // Add attributes to circles
 for (var i = 0; i < circles.length; i++) {
     var circle = $(circles.eq(i));
-    circle.attr('col', i % 6);
-    circle.attr('row', Math.floor(i / 6));
+    circle.attr('col', i % 7);
+    circle.attr('row', Math.floor(i / 7));
     circle.click(changeColorOfLowest);
 }
