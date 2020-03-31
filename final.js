@@ -1,8 +1,10 @@
 // Restart Game Button
 var circles = $('.dot');
+var playerNames = $('.playerName');
+var playerWins = $('.playerWins');
 
-var playerBlue = {'color': 'rgb(0, 0, 255)'};
-var playerRed = {'color': 'rgb(255, 0, 0)'};
+var playerBlue = {'color': 'rgb(0, 0, 255)', 'wins': 0};
+var playerRed = {'color': 'rgb(255, 0, 0)', 'wins': 0};
 
 var player = playerBlue;
 
@@ -14,8 +16,17 @@ alert('Welcome to Connect Four! Please input player names:');
 
 playerBlue['name'] = prompt('Name of the blue player');
 playerRed['name'] = prompt('Name of the red player');
+$(playerNames.eq(0).text(playerBlue['name']))
+$(playerNames.eq(1).text(playerRed['name']))
+
+updateWins()
 
 turnInfo.html("It is " + player['name'] + "'s turn");
+
+function updateWins() {
+    $(playerWins.eq(0).text(playerBlue['wins']))
+    $(playerWins.eq(1).text(playerRed['wins']))
+}
 
 function clearBoard() {
     console.log('click')
@@ -27,9 +38,11 @@ restart.click(clearBoard);
 
 function changePlayer() {
     if (player === playerBlue) {
+        playerBlue = player;
         player = playerRed;
 
     } else {
+        playerRed = player;
         player = playerBlue;
     }
 }
@@ -81,6 +94,14 @@ function changeColorOfLowest(){
             circle.css('background-color', player['color']);
             if (checkGameStatus(circle)) {
                alert('GameOver! ' + player['name']  + ' won. Congratulations')
+               player['wins']++
+               updateWins()
+               // if (player['name'] == playerBlue['name']) {
+               //      playerBlue['wins'] = playerBlue['wins'] + 1
+               //  }
+               // else {
+               //      playerBlue['wins'] = playerBlue['wins'] + 1
+               // }
             }
             changePlayer();
             turnInfo.html("It is " + player['name'] + "'s turn");

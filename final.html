@@ -14,9 +14,27 @@
 <body>
 <div class="container" align='center'>
   <div class="jumbotron">
-    <h1 align="center">Welcome to Connect Four!</h1>
+    <h1>Welcome to Connect Four!</h1>
     <p>The object of this game is to connect four of your chips in a row</p>
-    <p id="turn_info"></p>
+      <div class="row">
+        <div class="col-sm-4" ><p id="turn_info"></p></div>
+        <div class="col-sm-8" >
+          <table id='score' border="1" align='center'>
+          <tr>
+            <td>player</td>
+            <td>wins</td>
+          </tr>
+          <tr>
+            <td class="playerName"></td>
+            <td class="playerWins"></td>
+          </tr>
+          <tr>
+            <td class="playerName"></td>
+            <td class="playerWins"></td>
+          </tr>
+        </table></div>
+      </div>
+    <p></p>
     <p><a id='restart_button' class="btn btn-primary btn-lg" href="#" role="button">Restart!</a></p>
   </div>
 		<table align='center'>
